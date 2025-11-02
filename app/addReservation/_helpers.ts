@@ -8,7 +8,10 @@ export const formatDate = (date: Date | null): string => {
 };
 
 export const formatDateForFirestore = (date: Date): string => {
-  return date.toISOString().split("T")[0];
+  const utcDate = new Date(
+    Date.UTC(date.getFullYear(), date.getMonth(), date.getDate())
+  );
+  return utcDate.toISOString().split("T")[0];
 };
 
 export const calculateMonthEndDate = (startDate: Date): Date => {

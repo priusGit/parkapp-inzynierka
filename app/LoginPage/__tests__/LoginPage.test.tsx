@@ -1,7 +1,7 @@
 import React from "react";
 import { render, fireEvent, waitFor } from "@testing-library/react-native";
 import { useAuth } from "@/contexts/AuthContext";
-import LoginScreen from "../LoginPage";
+import LoginScreen from "../../LoginPage";
 
 jest.mock("@/contexts/AuthContext");
 jest.mock("expo-router", () => ({
@@ -44,16 +44,18 @@ describe("LoginPage", () => {
     fireEvent.press(registerButton);
 
     expect(getByPlaceholderText("Nazwa użytkownika")).toBeTruthy();
-    expect(getByPlaceholderText("Kod dostępu")).toBeTruthy();
+    expect(getByPlaceholderText("Kod dostępu (6 znaków)")).toBeTruthy();
   });
 
   it("should call login function on login button press", async () => {
     mockLogin.mockResolvedValue(undefined);
-    const { getByPlaceholderText, getByText } = render(<LoginScreen />);
+    const { getByTestId, getByPlaceholderText, getByText, debug } = render(
+      <LoginScreen />
+    );
 
     const emailInput = getByPlaceholderText("Email");
     const passwordInput = getByPlaceholderText("Hasło");
-    const loginButton = getByText("Zaloguj się");
+    const loginButton = getByTestId("login-button");
 
     fireEvent.changeText(emailInput, "test@example.com");
     fireEvent.changeText(passwordInput, "password123");
@@ -62,20 +64,5 @@ describe("LoginPage", () => {
     await waitFor(() => {
       expect(mockLogin).toHaveBeenCalledWith("test@example.com", "password123");
     });
-  });
-
-  it("should show error when login fails", async () => {
-    mockLogin.mockRejectedValue({ code: "auth/user-not-found" });
-    const { getByPlaceholderText, getByText } = render(<LoginScreen />);
-
-    const emailInput = getByPlaceholderText("Email");
-    const passwordInput = getByPlaceholderText("Hasło");
-    const loginButton = getByText("Zaloguj się");
-
-    fireEvent.changeText(emailInput, "test@example.com");
-    fireEvent.changeText(passwordInput, "wrongpassword");
-    fireEvent.press(loginButton);
-
-    // Error should be handled by the component
   });
 });

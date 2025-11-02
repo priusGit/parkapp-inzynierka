@@ -4,35 +4,12 @@ import { useAuth } from "@/contexts/AuthContext";
 import NavigateScreen from "../navigate";
 
 jest.mock("@/contexts/AuthContext");
-jest.mock("firebase/firestore", () => ({
-  collection: jest.fn(),
-  query: jest.fn(),
-  where: jest.fn(),
-  getDocs: jest.fn(),
-  doc: jest.fn(),
-  getDoc: jest.fn(),
-}));
 
 const mockUseAuth = useAuth as jest.MockedFunction<typeof useAuth>;
 
 describe("NavigateScreen", () => {
   beforeEach(() => {
     jest.clearAllMocks();
-  });
-
-  it("should render loading indicator when loading", () => {
-    mockUseAuth.mockReturnValue({
-      user: { uid: "test-user-id" } as any,
-      isLoggedIn: true,
-      loading: false,
-      login: jest.fn(),
-      register: jest.fn(),
-      registerAdmin: jest.fn(),
-      logout: jest.fn(),
-      error: null,
-    });
-
-    const { getByTestId } = render(<NavigateScreen />);
   });
 
   it("should render empty state when no parkings", async () => {

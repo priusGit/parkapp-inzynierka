@@ -4,10 +4,6 @@ import { useAuth } from "@/contexts/AuthContext";
 import RegisterParkingScreen from "../index";
 
 jest.mock("@/contexts/AuthContext");
-jest.mock("firebase/firestore", () => ({
-  collection: jest.fn(),
-  addDoc: jest.fn(),
-}));
 
 jest.mock("expo-router", () => ({
   router: {

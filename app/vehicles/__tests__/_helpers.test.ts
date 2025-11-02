@@ -17,7 +17,6 @@ import {
 } from "firebase/firestore";
 
 jest.mock("@/config/firebaseConfig");
-jest.mock("firebase/firestore");
 jest.mock("react-native", () => ({
   Alert: {
     alert: jest.fn(),

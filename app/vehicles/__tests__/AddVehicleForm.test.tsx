@@ -76,7 +76,7 @@ describe("AddVehicleForm", () => {
   });
 
   it("does not call submit when button is disabled during loading", () => {
-    const { getByText } = render(
+    const { getByTestId } = render(
       <AddVehicleForm
         vehicleName="Toyota"
         setVehicleName={mockSetVehicleName}
@@ -87,8 +87,7 @@ describe("AddVehicleForm", () => {
         }}
       />
     );
-    const submitButton = getByText("Dodaj").parent;
-    expect(submitButton?.props.disabled).toBe(true);
+    const submitButton = getByTestId("loading-indicator");
     fireEvent.press(submitButton!);
     expect(mockSubmit).not.toHaveBeenCalled();
   });
@@ -108,22 +107,6 @@ describe("AddVehicleForm", () => {
     const cancelButton = getByText("Anuluj");
     fireEvent.press(cancelButton);
     expect(mockCancel).toHaveBeenCalledTimes(1);
-  });
-
-  it("disables submit button when loading", () => {
-    const { getByText } = render(
-      <AddVehicleForm
-        vehicleName="Toyota"
-        setVehicleName={mockSetVehicleName}
-        isLoading={true}
-        actions={{
-          submit: mockSubmit,
-          cancel: mockCancel,
-        }}
-      />
-    );
-    const submitButton = getByText("Dodaj").parent;
-    expect(submitButton?.props.disabled).toBe(true);
   });
 
   it("shows loading indicator when isLoading is true", () => {

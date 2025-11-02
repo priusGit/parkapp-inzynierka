@@ -4,16 +4,6 @@ import { useAuth } from "@/contexts/AuthContext";
 import AddReservationScreen from "../index";
 
 jest.mock("@/contexts/AuthContext");
-jest.mock("firebase/firestore", () => ({
-  collection: jest.fn(),
-  query: jest.fn(),
-  where: jest.fn(),
-  getDocs: jest.fn(),
-  addDoc: jest.fn(),
-  doc: jest.fn(),
-  getDoc: jest.fn(),
-  serverTimestamp: jest.fn(),
-}));
 
 const mockUseAuth = useAuth as jest.MockedFunction<typeof useAuth>;
 

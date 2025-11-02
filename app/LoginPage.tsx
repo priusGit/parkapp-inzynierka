@@ -76,7 +76,6 @@ export default function LoginScreen() {
       Alert.alert("Sukces", "Konto zostało utworzone pomyślnie!");
       router.replace("/(tabs)");
     } catch (error: any) {
-      console.log(error);
       let errorMessage = "Wystąpił błąd podczas rejestracji";
 
       if (error.message === "Nieprawidłowy kod dostępu") {
@@ -147,6 +146,7 @@ export default function LoginScreen() {
           <TouchableOpacity
             style={styles.button}
             onPress={isRegistering ? handleRegister : handleLogin}
+            testID="login-button"
           >
             <Text style={styles.buttonText}>
               {isRegistering ? "Zarejestruj się" : "Zaloguj się"}

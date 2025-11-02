@@ -49,7 +49,7 @@ export const AddVehicleForm: React.FC<AddVehicleFormProps> = ({
           disabled={isLoading}
         >
           {isLoading ? (
-            <ActivityIndicator color="#fff" />
+            <ActivityIndicator color="#fff" testID="loading-indicator" />
           ) : (
             <Text style={styles.saveButtonText}>Dodaj</Text>
           )}

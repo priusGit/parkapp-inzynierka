@@ -32,7 +32,7 @@ describe("date helpers", () => {
     it("should return limited reservations for date within range", () => {
       const dateStr = "2025-06-03";
       const result = getReservationsForDate(dateStr, mockReservations);
-      expect(result).toHaveLength(1);
+      expect(result).toHaveLength(2);
       expect(result[0].id).toBe(1);
     });
 

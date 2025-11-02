@@ -14,11 +14,6 @@ jest.mock("expo-router", () => ({
   },
 }));
 
-jest.mock("firebase/firestore", () => ({
-  doc: jest.fn(),
-  getDoc: jest.fn(),
-}));
-
 describe("ReservationDetailsScreen", () => {
   it("should render reservation details", async () => {
     const mockGetDoc = require("firebase/firestore").getDoc;
