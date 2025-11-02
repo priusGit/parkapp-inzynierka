@@ -1,0 +1,186 @@
+import { StyleSheet } from "react-native";
+
+export const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#fff",
+  },
+  header: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    paddingTop: 40,
+    paddingHorizontal: 8,
+    borderBottomWidth: 1,
+    borderBottomColor: "#eee",
+  },
+  headerTitle: {
+    fontSize: 18,
+    fontWeight: "bold",
+  },
+  scrollView: {
+    flex: 1,
+  },
+  content: {
+    padding: 20,
+  },
+  label: {
+    fontSize: 16,
+    fontWeight: "600",
+    marginBottom: 8,
+    marginTop: 16,
+  },
+  vehicleOption: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    padding: 12,
+    borderRadius: 8,
+    borderWidth: 1,
+    borderColor: "#ccc",
+    marginBottom: 12,
+    backgroundColor: "#fff",
+  },
+  vehicleOptionActive: {
+    borderColor: "#6200ff",
+    borderWidth: 2,
+    backgroundColor: "#f5f0ff",
+  },
+  vehicleOptionContent: {
+    flexDirection: "row",
+    alignItems: "center",
+    flex: 1,
+  },
+  vehicleOptionText: {
+    fontSize: 16,
+    fontWeight: "500",
+    marginLeft: 8,
+  },
+  noVehiclesContainer: {
+    padding: 20,
+    backgroundColor: "#fff3cd",
+    borderRadius: 8,
+    borderWidth: 1,
+    borderColor: "#ffc107",
+    marginBottom: 16,
+  },
+  noVehiclesText: {
+    fontSize: 14,
+    color: "#856404",
+    marginBottom: 12,
+    textAlign: "center",
+  },
+  addVehicleButton: {
+    backgroundColor: "#6200ff",
+    padding: 12,
+    borderRadius: 8,
+    alignItems: "center",
+  },
+  addVehicleButtonText: {
+    color: "#fff",
+    fontSize: 14,
+    fontWeight: "600",
+  },
+  typeContainer: {
+    flexDirection: "row",
+    gap: 12,
+  },
+  typeButton: {
+    flex: 1,
+    padding: 12,
+    borderRadius: 8,
+    borderWidth: 1,
+    borderColor: "#ccc",
+    alignItems: "center",
+  },
+  typeButtonActive: {
+    backgroundColor: "#6200ff",
+    borderColor: "#6200ff",
+  },
+  typeText: {
+    fontSize: 16,
+    color: "#666",
+  },
+  typeTextActive: {
+    color: "#fff",
+    fontWeight: "600",
+  },
+  dateButton: {
+    flexDirection: "row",
+    alignItems: "center",
+    borderWidth: 1,
+    borderColor: "#ccc",
+    borderRadius: 8,
+    padding: 8,
+    backgroundColor: "#fff",
+  },
+  dateButtonText: {
+    fontSize: 16,
+    color: "#333",
+    marginLeft: 8,
+  },
+  autoDateInfo: {
+    backgroundColor: "#e8f5e9",
+    padding: 12,
+    borderRadius: 8,
+    marginTop: 8,
+    borderWidth: 1,
+    borderColor: "#4caf50",
+  },
+  autoDateLabel: {
+    fontSize: 12,
+    color: "#2e7d32",
+    marginBottom: 4,
+  },
+  autoDateText: {
+    fontSize: 14,
+    fontWeight: "600",
+    color: "#1b5e20",
+  },
+  placeCard: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    padding: 16,
+    borderRadius: 8,
+    borderWidth: 1,
+    borderColor: "#ccc",
+    marginBottom: 12,
+  },
+  placeCardActive: {
+    borderColor: "#6200ff",
+    borderWidth: 2,
+    backgroundColor: "#f5f0ff",
+  },
+  placeName: {
+    fontSize: 16,
+    fontWeight: "600",
+  },
+  placeAddress: {
+    fontSize: 14,
+    color: "#666",
+    marginTop: 4,
+  },
+  submitButton: {
+    backgroundColor: "#6200ff",
+    padding: 16,
+    borderRadius: 8,
+    alignItems: "center",
+    marginTop: 24,
+    marginBottom: 40,
+  },
+  submitButtonDisabled: {
+    opacity: 0.6,
+  },
+  submitButtonText: {
+    color: "#fff",
+    fontSize: 16,
+    fontWeight: "bold",
+  },
+  emptyText: {
+    textAlign: "center",
+    color: "#666",
+    marginTop: 20,
+    fontSize: 16,
+  },
+});

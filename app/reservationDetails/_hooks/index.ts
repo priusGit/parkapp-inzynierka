@@ -1,0 +1,3 @@
+export { useParkingDetails } from "./useParkingDetails";
+
+

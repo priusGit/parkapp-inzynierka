@@ -1,10 +1,35 @@
-// https://docs.expo.dev/guides/using-eslint/
-const { defineConfig } = require('eslint/config');
-const expoConfig = require('eslint-config-expo/flat');
+// eslint.config.js
+import { FlatCompat } from '@eslint/eslintrc';
+import js from '@eslint/js';
 
-module.exports = defineConfig([
-  expoConfig,
+const compat = new FlatCompat();
+
+export default [
+  js.configs.recommended,
   {
-    ignores: ['dist/*'],
+    languageOptions: {
+      ecmaVersion: 2020,
+      sourceType: 'module',
+      parserOptions: {
+        ecmaFeatures: {
+          jsx: true
+        }
+      }
+    },
+    plugins: {
+      react: require('eslint-plugin-react'),
+      'react-native': require('eslint-plugin-react-native'),
+      prettier: require('eslint-plugin-prettier')
+    },
+    rules: {
+      'prettier/prettier': 'error',
+      // Twoje reguły
+    },
+    settings: {
+      react: {
+        version: 'detect'
+      }
+    }
   },
-]);
+  ...compat.extends('plugin:react/recommended', 'plugin:react-native/all', 'plugin:prettier/recommended')
+];
