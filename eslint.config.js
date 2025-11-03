@@ -1,6 +1,6 @@
 // eslint.config.js
-import { FlatCompat } from '@eslint/eslintrc';
-import js from '@eslint/js';
+import { FlatCompat } from "@eslint/eslintrc";
+import js from "@eslint/js";
 
 const compat = new FlatCompat();
 
@@ -9,27 +9,30 @@ export default [
   {
     languageOptions: {
       ecmaVersion: 2020,
-      sourceType: 'module',
+      sourceType: "module",
       parserOptions: {
         ecmaFeatures: {
-          jsx: true
-        }
-      }
+          jsx: true,
+        },
+      },
     },
     plugins: {
-      react: require('eslint-plugin-react'),
-      'react-native': require('eslint-plugin-react-native'),
-      prettier: require('eslint-plugin-prettier')
+      react: require("eslint-plugin-react"),
+      "react-native": require("eslint-plugin-react-native"),
+      prettier: require("eslint-plugin-prettier"),
     },
     rules: {
-      'prettier/prettier': 'error',
-      // Twoje reguły
+      "prettier/prettier": "error",
     },
     settings: {
       react: {
-        version: 'detect'
-      }
-    }
+        version: "detect",
+      },
+    },
   },
-  ...compat.extends('plugin:react/recommended', 'plugin:react-native/all', 'plugin:prettier/recommended')
+  ...compat.extends(
+    "plugin:react/recommended",
+    "plugin:react-native/all",
+    "plugin:prettier/recommended"
+  ),
 ];

@@ -17,13 +17,6 @@ export const getReservationsForDate = (
     const start = new Date(startDate);
     const end = new Date(endDate);
 
-    if (type === "monthly") {
-      return (
-        targetDate.getFullYear() === start.getFullYear() &&
-        targetDate.getMonth() === start.getMonth()
-      );
-    } else {
-      return targetDate >= start && targetDate <= end;
-    }
+    return targetDate >= start && targetDate <= end;
   });
 };

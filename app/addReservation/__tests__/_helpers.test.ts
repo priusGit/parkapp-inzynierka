@@ -34,23 +34,36 @@ describe("addReservation helpers", () => {
   });
 
   describe("calculateMonthEndDate", () => {
-    it("should return last day of the month", () => {
+    it("should return the same date one month later", () => {
       const startDate = new Date(2025, 5, 15); // June 15, 2025
       const result = calculateMonthEndDate(startDate);
-      expect(result.getDate()).toBe(30);
-      expect(result.getMonth()).toBe(5);
+      expect(result.getDate()).toBe(15);
+      expect(result.getMonth()).toBe(6); // July
+      expect(result.getFullYear()).toBe(2025);
     });
 
-    it("should handle months with 31 days", () => {
+    it("should handle month transitions correctly", () => {
       const startDate = new Date(2025, 0, 15); // January 15, 2025
       const result = calculateMonthEndDate(startDate);
-      expect(result.getDate()).toBe(31);
+      expect(result.getDate()).toBe(15);
+      expect(result.getMonth()).toBe(1); // February
+      expect(result.getFullYear()).toBe(2025);
+    });
+
+    it("should handle year transitions correctly", () => {
+      const startDate = new Date(2025, 11, 15); // December 15, 2025
+      const result = calculateMonthEndDate(startDate);
+      expect(result.getDate()).toBe(15);
+      expect(result.getMonth()).toBe(0); // January
+      expect(result.getFullYear()).toBe(2026);
     });
 
     it("should handle February in leap year", () => {
       const startDate = new Date(2024, 1, 15); // February 15, 2024 (leap year)
       const result = calculateMonthEndDate(startDate);
-      expect(result.getDate()).toBe(29);
+      expect(result.getDate()).toBe(15);
+      expect(result.getMonth()).toBe(2); // March
+      expect(result.getFullYear()).toBe(2024);
     });
   });
 });

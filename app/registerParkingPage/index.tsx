@@ -92,17 +92,23 @@ export default function RegisterParkingScreen() {
 
         {loading ? (
           <ActivityIndicator
+            testID="loading-indicator"
             size="large"
             color="#6200ff"
             style={{ marginTop: 20 }}
           />
         ) : (
-          <TouchableOpacity style={styles.button} onPress={handleRegister}>
+          <TouchableOpacity
+            testID="register-button"
+            style={styles.button}
+            onPress={handleRegister}
+          >
             <Text style={styles.buttonText}>Zarejestruj parking</Text>
           </TouchableOpacity>
         )}
 
         <TouchableOpacity
+          testID="back-button"
           style={styles.backButton}
           onPress={() => router.back()}
         >
@@ -112,4 +118,3 @@ export default function RegisterParkingScreen() {
     </ScrollView>
   );
 }
-

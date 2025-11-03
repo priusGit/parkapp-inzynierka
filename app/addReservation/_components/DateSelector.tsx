@@ -33,17 +33,24 @@ export const DateSelector: React.FC<DateSelectorProps> = ({
       <Text style={styles.label}>
         {type === "monthly" ? "Wybierz miesiąc" : "Data początkowa"}
       </Text>
-      <TouchableOpacity style={styles.dateButton} onPress={onStartDatePress}>
+      <TouchableOpacity
+        style={styles.dateButton}
+        onPress={onStartDatePress}
+        testID="startDateButton"
+      >
         <IconButton icon="calendar" size={20} iconColor="#6200ff" />
         <Text style={styles.dateButtonText}>
           {startDate ? formatDate(startDate) : "Wybierz datę"}
         </Text>
       </TouchableOpacity>
-
       {type === "limited" && (
         <>
           <Text style={styles.label}>Data końcowa</Text>
-          <TouchableOpacity style={styles.dateButton} onPress={onEndDatePress}>
+          <TouchableOpacity
+            style={styles.dateButton}
+            onPress={onEndDatePress}
+            testID="endDateButton"
+          >
             <IconButton icon="calendar" size={20} iconColor="#6200ff" />
             <Text style={styles.dateButtonText}>
               {endDate ? formatDate(endDate) : "Wybierz datę"}
@@ -51,16 +58,16 @@ export const DateSelector: React.FC<DateSelectorProps> = ({
           </TouchableOpacity>
         </>
       )}
-
       {type === "monthly" && endDate && (
         <View style={styles.autoDateInfo}>
           <Text style={styles.autoDateLabel}>Data końcowa (automatyczna):</Text>
           <Text style={styles.autoDateText}>{formatDate(endDate)}</Text>
         </View>
       )}
-
+      console.log("showStartDatePicker", showStartDatePicker);
       {showStartDatePicker && (
         <DateTimePicker
+          testID="startDateTimePicker"
           value={startDate || new Date()}
           mode="date"
           display="default"
@@ -68,9 +75,9 @@ export const DateSelector: React.FC<DateSelectorProps> = ({
           minimumDate={new Date()}
         />
       )}
-
       {showEndDatePicker && (
         <DateTimePicker
+          testID="endDateTimePicker"
           value={endDate || new Date()}
           mode="date"
           display="default"

@@ -15,5 +15,7 @@ export const formatDateForFirestore = (date: Date): string => {
 };
 
 export const calculateMonthEndDate = (startDate: Date): Date => {
-  return new Date(startDate.getFullYear(), startDate.getMonth() + 1, 0);
+  const endDate = new Date(startDate);
+  endDate.setMonth(endDate.getMonth() + 1);
+  return endDate;
 };

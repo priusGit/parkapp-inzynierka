@@ -20,6 +20,7 @@ export default function ClientsScreen() {
     return (
       <View style={styles.container}>
         <ActivityIndicator
+          testID="loading-indicator"
           size="large"
           color="#6200ff"
           style={{ marginTop: 50 }}
@@ -44,6 +45,7 @@ export default function ClientsScreen() {
         <View style={styles.accessCodeContainer}>
           <Text style={styles.accessCodeLabel}>Kod zaproszeniowy</Text>
           <TouchableOpacity
+            testID="copy-access-code-button"
             style={styles.accessCodeButton}
             onPress={copyAccessCode}
           >
@@ -106,4 +108,3 @@ export default function ClientsScreen() {
     </ScrollView>
   );
 }
-

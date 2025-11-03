@@ -50,7 +50,12 @@ export default function AddReservationScreen() {
       keyboardVerticalOffset={Platform.OS === "ios" ? 0 : 20}
     >
       <View style={styles.header}>
-        <IconButton icon="arrow-left" size={24} onPress={() => router.back()} />
+        <IconButton
+          testID="back-button"
+          icon="arrow-left"
+          size={24}
+          onPress={() => router.back()}
+        />
         <Text style={styles.headerTitle}>Nowa rezerwacja</Text>
         <View style={{ width: 40 }} />
       </View>
@@ -92,12 +97,13 @@ export default function AddReservationScreen() {
         />
 
         <TouchableOpacity
+          testID="submit-button"
           style={[styles.submitButton, loading && styles.submitButtonDisabled]}
           onPress={actions.submit}
           disabled={loading}
         >
           {loading ? (
-            <ActivityIndicator color="#fff" />
+            <ActivityIndicator testID="loading-indicator" color="#fff" />
           ) : (
             <Text style={styles.submitButtonText}>Dodaj rezerwację</Text>
           )}

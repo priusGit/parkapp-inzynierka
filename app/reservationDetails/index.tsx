@@ -1,3 +1,4 @@
+import React from "react";
 import { Text, View, Image, ActivityIndicator, ScrollView } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { useLocalSearchParams, router } from "expo-router";
@@ -13,7 +14,11 @@ export default function ReservationDetailsScreen() {
   if (loading) {
     return (
       <View style={styles.container}>
-        <ActivityIndicator size="large" color={ACCENT_COLOR} />
+        <ActivityIndicator
+          testID="loading-indicator"
+          size="large"
+          color={ACCENT_COLOR}
+        />
       </View>
     );
   }
@@ -21,13 +26,19 @@ export default function ReservationDetailsScreen() {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <IconButton icon="arrow-left" size={24} onPress={() => router.back()} />
+        <IconButton
+          testID="back-button"
+          icon="arrow-left"
+          size={24}
+          onPress={() => router.back()}
+        />
         <Text style={styles.headerTitle}>Szczegóły rezerwacji</Text>
         <View style={{ width: 40 }} />
       </View>
       <ScrollView contentContainerStyle={{ paddingBottom: 20 }}>
         <View style={styles.card}>
           <Image
+            testID="parking-image"
             source={{ uri: parking?.img }}
             style={styles.parkingImage}
             resizeMode="cover"

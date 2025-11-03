@@ -140,7 +140,11 @@ export default function LoginScreen() {
       />
 
       {loading ? (
-        <ActivityIndicator size="large" color="#6200ff" />
+        <ActivityIndicator
+          testID="loading-indicator"
+          size="large"
+          color="#6200ff"
+        />
       ) : (
         <>
           <TouchableOpacity
@@ -154,6 +158,7 @@ export default function LoginScreen() {
           </TouchableOpacity>
 
           <TouchableOpacity
+            testID="switch-mode-button"
             style={styles.switchButton}
             onPress={() => setIsRegistering(!isRegistering)}
           >
@@ -166,6 +171,7 @@ export default function LoginScreen() {
 
           {isRegistering && (
             <TouchableOpacity
+              testID="register-parking-button"
               style={styles.registerParkingButton}
               onPress={() => router.push("/registerParkingPage")}
             >

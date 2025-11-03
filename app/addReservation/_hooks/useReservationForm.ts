@@ -22,14 +22,12 @@ export const useReservationForm = (
   const [showStartDatePicker, setShowStartDatePicker] = useState(false);
   const [showEndDatePicker, setShowEndDatePicker] = useState(false);
 
-  // Automatycznie wybierz pojazd jeśli jest tylko jeden
   useEffect(() => {
     if (vehicles.length === 1 && !selectedVehicleId && vehicles[0]?.id) {
       setSelectedVehicleId(vehicles[0].id);
     }
   }, [vehicles, selectedVehicleId]);
 
-  // Automatycznie wybierz parking jeśli jest tylko jeden
   useEffect(() => {
     if (parkings.length === 1 && !selectedPlaceId && parkings[0]?.id) {
       setSelectedPlaceId(parkings[0].id);
@@ -76,25 +74,33 @@ export const useReservationForm = (
   };
 
   const handleSubmit = async () => {
+    console.log("submit pressed");
     if (!selectedVehicleId || !startDate || !endDate || !selectedPlaceId) {
+      console.log("selectedVehicleId", selectedVehicleId);
+      console.log("startDate", startDate);
+      console.log("endDate", endDate);
+      console.log("selectedPlaceId", selectedPlaceId);
       Alert.alert("Błąd", "Proszę wypełnić wszystkie pola");
+      console.log("error: missing fields");
       return;
     }
 
     if (!user) {
       Alert.alert("Błąd", "Musisz być zalogowany");
+      console.log("error: not logged in");
       return;
     }
 
     const selectedVehicle = vehicles.find((v) => v.id === selectedVehicleId);
     if (!selectedVehicle) {
       Alert.alert("Błąd", "Nie znaleziono wybranego pojazdu");
+      console.log("error: vehicle not found");
       return;
     }
 
     try {
       setLoading(true);
-
+      console.log("adding reservation");
       await addDoc(collection(db, "reservations"), {
         name: selectedVehicle.name,
         vehicleId: selectedVehicleId,

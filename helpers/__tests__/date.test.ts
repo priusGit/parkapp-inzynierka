@@ -14,7 +14,7 @@ describe("date helpers", () => {
       id: 2,
       type: "monthly" as const,
       startDate: "2025-06-01",
-      endDate: "2025-06-31",
+      endDate: "2025-07-01",
       name: "Mazda",
       placeId: 1,
     },
@@ -36,7 +36,7 @@ describe("date helpers", () => {
       expect(result[0].id).toBe(1);
     });
 
-    it("should return monthly reservations for date in same month", () => {
+    it("should return monthly reservations for date within range", () => {
       const dateStr = "2025-06-15";
       const result = getReservationsForDate(dateStr, mockReservations);
       expect(result.length).toBeGreaterThan(0);
